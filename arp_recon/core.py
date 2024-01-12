@@ -2,6 +2,7 @@ from .detector import detect_anomalies
 from .analyzer import analyze_packets
 from .utils import *
 from .arp_packet import *
+from .detector import *
 import socket
     
 def run():
@@ -19,6 +20,8 @@ def run():
             if is_arp(packet) :
                 arp_packet = ARPPacket(packet,id)
                 arp_packet.unpack_arp()
+                detector = Detector(arp_packet)
+                detector.detect_arp_poisonning()
                 print(arp_packet.who_has_form())
                 id+=1
     except KeyboardInterrupt:
