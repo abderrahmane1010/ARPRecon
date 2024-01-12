@@ -10,5 +10,6 @@ if __name__ == '__main__':
 
 
 # pour tous lancer : python3 -m unittest 
+# python3 -m unittest test_core.py
 # python3 -m unittest test_detector.py
 # python3 -m unittest test_analyzer.py
