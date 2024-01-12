@@ -31,14 +31,20 @@ def name_of_active_interface():
 
 def is_arp(packet):
     return packet[12:14] == b'\x08\x06'
-    
-def banner():
+
+def get_active_args(args):
+    active_args = [arg for arg in vars(args) if getattr(args, arg) is not None]
+    return ', '.join(active_args) if active_args else 'without arguments'
+
+def banner(args):
     print("")
     print("=" * 58)
     print(colorize("                           ARPRecon","cyan"))
     print("-" * 58)
     print(" Tool designed for monitoring and securing networks")
     print(" against ARP-related vulnerabilities and threats.")
+    print("-" * 58)
+    print(f' {colorize(get_active_args(args),"magenta")}')
     print("=" * 58)
     print("")
     

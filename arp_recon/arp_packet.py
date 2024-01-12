@@ -23,6 +23,10 @@ class ARPPacket:
         self._to_protocol = ""
         self.id = id
 
+    def all_attributs(self):
+        return [self.get_hard_type(), self.get_protocol_type(), self.get_length_hard(), self.get_length_protocol(),
+                self.get_operation(), self.get_from_hard(), self.get_from_protocol(), self.get_to_hard(), self.get_to_protocol()]
+    
     def get_hard_type(self):
         return self._hard_type
     def get_protocol_type(self):
