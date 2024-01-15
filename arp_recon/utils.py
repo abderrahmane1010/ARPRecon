@@ -1,4 +1,5 @@
 import netifaces
+import socket 
 
 class darkcolours:
     HEADER = '\033[95m'
@@ -35,6 +36,13 @@ def is_arp(packet):
 def get_active_args(args):
     active_args = [arg for arg in vars(args) if getattr(args, arg) is not None]
     return ', '.join(active_args) if active_args else 'without arguments'
+
+def gethostnamebyaddr_or_getaddr(address) :
+    try:
+        hostname, _, _ = socket.gethostbyaddr(address)
+        return hostname
+    except socket.herror as e:
+        return address
 
 def banner(args):
     print("")

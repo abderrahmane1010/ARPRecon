@@ -16,6 +16,8 @@ env/
 ENV/
 myenv/
 
+# captures
+captures/
 # Fichiers de cache ou de logs
 *.log
 .cache

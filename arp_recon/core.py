@@ -1,9 +1,8 @@
-from .detector import detect_anomalies
-from .analyzer import analyze_packets
 from .utils import *
 from .arp_packet import *
 from .detector import *
 from .capture import *
+from .analyzer import *
 import socket
 import argparse
 
@@ -60,14 +59,14 @@ def run():
 
                 if args.capture :
                     # Capture :
-                    capture = Capture(arp_packet, "captures", "cap.csv")
+                    capture = Capture(arp_packet, "captures", "cap1.csv")
 
+                if args.analyze :
+                    Analyzer(arp_packet, aliveness=True)
+    
                 id+=1
     except KeyboardInterrupt:
             print("Stop Intercepting")
             s.close()
 
     
-    packets = analyze_packets()
-    detect_anomalies(packets)
-    print("Analysis complete.")
